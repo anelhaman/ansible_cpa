@@ -1,0 +1,5 @@
+[cpa]
+
+server143 ansible_ssh_host=172.16.14.3
+server144 ansible_ssh_host=172.16.14.4
+

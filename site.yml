@@ -1,0 +1,11 @@
+---
+- name: Some basic Ansible features
+  hosts: cpa
+  user: root
+  # remote_user: user
+  # sudo: yes
+
+  roles:
+    - role: common
+      docker_centos_state: started
+      docker_centos_enabled: yes
