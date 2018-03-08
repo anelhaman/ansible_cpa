@@ -14,23 +14,39 @@
 - name: Install tree
   yum: name=tree state=present 
 
+
 - name: check whether docker-ce has already installed
   command: rpm -q docker-ce
   args:
     warn: no
-  register: result
+  register: resultdockerce
   changed_when: no
   failed_when: no
 
+- name: check whether docker-compose has already installed
+  command: rpm -q docker-compose
+  args:
+    warn: no
+  register: resultdockercompose
+  changed_when: no
+  failed_when: no
+
+
 - include_tasks: install_docker.yml
-  when: result.rc
+  when: resultdockerce.rc
   static: no
+
+- include_tasks: install_docker_compose.yml
+  when: resultdockercompose.rc
+  static: no
+
 
 - name: change the status of the docker daemon
   service:
     name: docker
     state: "{{docker_centos_state}}"
   when: docker_centos_state is not undefined
+
 - name: make docker daemon enabled or disabled
   service:
     name: docker
