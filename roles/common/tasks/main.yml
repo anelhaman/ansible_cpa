@@ -24,10 +24,10 @@
   failed_when: no
 
 - name: check whether docker-compose has already installed
-  command: rpm -q docker-compose
+  command: docker-compose --version
   args:
     warn: no
-  register: resultdockercompose
+  register: result
   changed_when: no
   failed_when: no
 
@@ -37,7 +37,7 @@
   static: no
 
 - include_tasks: install_docker_compose.yml
-  when: resultdockercompose.rc
+  when: result.rc
   static: no
 
 
