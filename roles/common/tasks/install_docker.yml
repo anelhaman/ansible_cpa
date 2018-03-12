@@ -22,5 +22,4 @@
 - name: install docker
   yum:
     name: docker-ce{{ (docker_centos_version == 'latest') | ternary('', '-{}'.format(docker_centos_version))}}
-    #name: docker-ce
     update_cache: yes
