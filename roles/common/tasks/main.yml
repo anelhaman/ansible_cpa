@@ -2,18 +2,8 @@
 - name: Update package lists
   yum: name=* state=latest
 
-- name: Install tmux
-  yum: name=tmux state=present
-
-- name: Install zsh
-  yum: name=zsh state=present
-
-- name: Install openssh
-  yum: name=openssh-server state=present
-
-- name: Install tree
-  yum: name=tree state=present 
-
+- name: Update utilities prog
+  import_tasks: install_util.yml
 
 - name: check whether docker-ce has already installed
   command: rpm -q docker-ce
@@ -27,19 +17,44 @@
   command: docker-compose --version
   args:
     warn: no
-  register: result
+  register: resultdockercompose
   changed_when: no
   failed_when: no
 
+- name: check weather zsh has already installed
+  command: rpm -q zsh
+  args:
+    warn: no
+  register: resultzsh
+  changed_when: no
+  failed_when: no
+
+- name: check zsh autosuggest still work
+  #file:
+  #  path: /root/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+  #  state: present
+  command: cat /root/.zsh/zsh-autosuggestions/VERSION
+  args:
+    warn: no
+  register: resultzshsuggest
+  changed_when: no
+  failed_when: no
 
 - include_tasks: install_docker.yml
   when: resultdockerce.rc
   static: no
 
 - include_tasks: install_docker_compose.yml
-  when: result.rc
+  when: resultdockercompose.rc
   static: no
 
+- include_tasks: install_zsh.yml
+  when: resultzsh.rc
+  static: no
+
+- include_tasks: install_zsh_autosuggest.yml
+  when: resultzshsuggest.rc
+  static: no
 
 - name: change the status of the docker daemon
   service:

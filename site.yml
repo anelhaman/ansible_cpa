@@ -2,8 +2,8 @@
 - name: Some basic Ansible features
   hosts: linux
   user: root
-  # remote_user: user
-  # sudo: yes
+  #remote_user: root
+  #sudo: yes
 
   roles:
     - role: common
@@ -13,4 +13,3 @@
       docker_compose_version: 1.19.0
       docker_compose_bin: /usr/local/bin/docker-compose
       docker_compose_as_root: yes
- 
