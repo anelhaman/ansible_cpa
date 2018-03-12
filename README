@@ -1,0 +1,22 @@
+.
+├── README
+├── group_vars
+│   └── all
+├── hosts
+├── roles
+│   └── common
+│       ├── default
+│       │   └── main.yml
+│       ├── handlers
+│       │   └── main.yml
+│       ├── tasks
+│       │   ├── install_docker.yml
+│       │   ├── install_docker_compose.yml
+│       │   ├── install_util.yml
+│       │   ├── install_zsh.yml
+│       │   ├── install_zsh_autosuggest.yml
+│       │   └── main.yml
+│       └── templates
+└── site.yml
+
+7 directories, 12 files
