@@ -1,1 +1,6 @@
-
+docker_centos_version: latest
+docker_centos_state: started
+docker_centos_enabled: yes
+docker_compose_version: 1.19.0
+docker_compose_bin: /usr/local/bin/docker-compose
+docker_compose_as_root: yes
