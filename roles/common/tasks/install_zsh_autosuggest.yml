@@ -1,3 +1,6 @@
 ---
 - name: Install zsh autosuggestion
-  command: git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+  get_url:
+    url: https://github.com/zsh-users/zsh-autosuggestions
+    dest: ~/.zsh/zsh-autosuggestions
+    mode: 0755

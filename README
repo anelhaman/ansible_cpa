@@ -4,19 +4,22 @@
 │   └── all
 ├── hosts
 ├── roles
-│   └── common
-│       ├── default
-│       │   └── main.yml
-│       ├── handlers
-│       │   └── main.yml
-│       ├── tasks
-│       │   ├── install_docker.yml
-│       │   ├── install_docker_compose.yml
-│       │   ├── install_util.yml
-│       │   ├── install_zsh.yml
-│       │   ├── install_zsh_autosuggest.yml
-│       │   └── main.yml
-│       └── templates
+│   ├── common
+│   │   ├── default
+│   │   │   └── main.yml
+│   │   ├── handlers
+│   │   │   └── main.yml
+│   │   ├── tasks
+│   │   │   ├── install_docker.yml
+│   │   │   ├── install_docker_compose.yml
+│   │   │   ├── install_util.yml
+│   │   │   ├── install_zsh.yml
+│   │   │   ├── install_zsh_autosuggest.yml
+│   │   │   └── main.yml
+│   │   └── templates
+│   │       └── zshrc.j2
+│   ├── database
+│   └── webservice
 └── site.yml
 
-7 directories, 12 files
+9 directories, 13 files

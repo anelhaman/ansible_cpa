@@ -30,10 +30,7 @@
   failed_when: no
 
 - name: check zsh autosuggest still work
-  #file:
-  #  path: /root/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-  #  state: present
-  command: cat /root/.zsh/zsh-autosuggestions/VERSION
+  command: grep "jtriley" ~/.zshrc
   args:
     warn: no
   register: resultzshsuggest
