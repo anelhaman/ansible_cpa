@@ -1,10 +1,7 @@
 ---
-- name: Some basic Ansible features
-  hosts: linux
+- name: Install foundation 
+  hosts: proxy webservices
   user: root
-  #remote_user: root
-  #sudo: yes
   roles:
     - role: common
     
-      

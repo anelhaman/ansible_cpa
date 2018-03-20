@@ -1,4 +1,9 @@
 ---
+- name: Update EPEL
+  yum: 
+    name: epel-release
+    state: present
+
 - name: Install Util
   yum: 
     name: "{{item}}"
@@ -9,3 +14,4 @@
    - vim
    - tmux
    - openssh-server
+   - htop

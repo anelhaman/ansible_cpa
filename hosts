@@ -1,6 +1,8 @@
-[linux]
-#server143 ansible_ssh_host=172.16.14.3
-#server144 ansible_ssh_host=172.16.14.4
+[proxy]
 server02 ansible_ssh_host=172.16.0.2
+
+[webservices]
 server04 ansible_ssh_host=172.16.0.4
+server0158 ansible_ssh_host=172.16.0.158
+server0213 ansible_ssh_host=172.16.0.213
 

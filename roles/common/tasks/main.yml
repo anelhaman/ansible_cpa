@@ -1,6 +1,7 @@
 ---
-- name: Update package lists
-  yum: name=* state=latest
+
+#- name: Update package lists
+#  yum: name=* state=latest
 
 - name: Update utilities prog
   import_tasks: install_util.yml
