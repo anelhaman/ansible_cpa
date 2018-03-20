@@ -1,5 +1,6 @@
 .
 ├── README
+├── README.md
 ├── group_vars
 │   └── all
 ├── hosts
@@ -18,8 +19,24 @@
 │   │   │   └── main.yml
 │   │   └── templates
 │   │       └── zshrc.j2
-│   ├── database
-│   └── webservice
+│   └── jenkins
+│       ├── README.md
+│       ├── defaults
+│       │   └── main.yml
+│       ├── files
+│       ├── handlers
+│       │   └── main.yml
+│       ├── meta
+│       │   └── main.yml
+│       ├── tasks
+│       │   └── main.yml
+│       ├── templates
+│       ├── tests
+│       │   ├── inventory
+│       │   └── test.yml
+│       └── vars
+│           └── main.yml
+├── site.jenkins.yml
 └── site.yml
 
-9 directories, 13 files
+16 directories, 23 files

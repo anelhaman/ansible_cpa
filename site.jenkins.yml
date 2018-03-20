@@ -1,10 +1,4 @@
 ---
-- name: Install foundation 
-  hosts: all
-  user: root
-  roles:
-    - role: common
-  
 - name: Install Jenkins CI
   hosts: ciserver
   user: root

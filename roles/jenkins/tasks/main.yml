@@ -1,0 +1,32 @@
+---
+- name: install pip
+  yum: 
+    name: python-pip
+    state: present
+
+- name: pip install env Docker
+  pip:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - docker-py
+
+- name: Container Jenkins is present
+  docker_container:
+    name: myjenkins
+    state: present
+    image: jenkinsci/blueocean
+    exposed_ports:
+      - 8080
+      - 50000
+    published_ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - "jenkins-data:/var/jenkins_home"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+- name: Start Jenkins
+  docker_container:
+    name: myjenkins
+    state: started

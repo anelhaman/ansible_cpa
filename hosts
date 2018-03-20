@@ -1,8 +1,10 @@
 [proxy]
 server02 ansible_ssh_host=172.16.0.2
 
-[webservices]
+[ciserver]
 server04 ansible_ssh_host=172.16.0.4
+
+[webservices]
 server0158 ansible_ssh_host=172.16.0.158
 server0213 ansible_ssh_host=172.16.0.213
 
