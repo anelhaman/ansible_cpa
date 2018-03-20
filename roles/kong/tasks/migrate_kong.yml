@@ -1,0 +1,18 @@
+---
+- name: Migrate database for kong service
+  docker_container:
+    name: migrate
+    image: kong
+    state: started
+    links:
+      kong-database:kong-database
+    env:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: kong-database
+      KONG_CASSANDRA_CONTACT_POINTS: kong-database
+    command: kong migrations up
+
+- name: Remove migrate command
+  docker_container:
+    name: migrate
+    state: absent
