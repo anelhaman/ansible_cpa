@@ -1,6 +1,5 @@
 ```
 .
-├── README
 ├── README.md
 ├── group_vars
 │   └── all
@@ -20,7 +19,24 @@
 │   │   │   └── main.yml
 │   │   └── templates
 │   │       └── zshrc.j2
-│   └── jenkins
+│   ├── jenkins
+│   │   ├── README.md
+│   │   ├── defaults
+│   │   │   └── main.yml
+│   │   ├── files
+│   │   ├── handlers
+│   │   │   └── main.yml
+│   │   ├── meta
+│   │   │   └── main.yml
+│   │   ├── tasks
+│   │   │   └── main.yml
+│   │   ├── templates
+│   │   ├── tests
+│   │   │   ├── inventory
+│   │   │   └── test.yml
+│   │   └── vars
+│   │       └── main.yml
+│   └── kong
 │       ├── README.md
 │       ├── defaults
 │       │   └── main.yml
@@ -38,7 +54,8 @@
 │       └── vars
 │           └── main.yml
 ├── site.jenkins.yml
+├── site.kong.yml
 └── site.yml
 
-16 directories, 23 files
+25 directories, 31 files
 ```
