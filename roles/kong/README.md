@@ -1,38 +1,60 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+KONG 
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+cpu support sse4.2
+
+```
+cat /proc/cpuinfo | grep sse4_2
+```
+(https://medium.com/@nprch_12/docker-exited-132)[https://medium.com/@nprch_12/docker-exited-132-e38f9dd2cd0d]
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+unnecessary for beginner
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+unnecessary for beginner
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+It's so easy to start service Kong on docker by Ansible
 
-    - hosts: servers
+```
+    - hosts: serverA
       roles:
-         - { role: username.rolename, x: 42 }
+         - kong
 
-License
--------
+```
 
-BSD
+Command run to install
+
+```
+ ansible-playbook -i hosts example.yml --tags "install"
+```
+ 
+Can check service with tag
+
+``` 
+ --tags "run"
+```
+
+And clear container kong & database with tag
+
+```
+ --tags "removeall"
+```
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Free Licenses CPA.GO.TH
+
