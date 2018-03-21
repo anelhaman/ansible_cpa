@@ -1,46 +1,78 @@
 ---
-- name: install pip
+- name: Install pip
   yum: 
-    name: python-pip
+    name: "{{item}}"
     state: present
+  with_items:
+    - python-pip
+  tags:
+    - install
 
-- name: pip install env Docker
+- name: Install env Docker
   pip:
     name: "{{item}}"
     state: present
   with_items:
     - docker-py
+  tags: 
+    - install
 
-- name: Container kong-database use postgres is started
+- name: Clear
+  docker_container:
+    name: "{{item}}"
+    state: absent
+  with_items:
+     - kong-database
+     - kong
+  tags: 
+     - install
+     - removeall
+
+- name: Container kong-database use postgres is present
   docker_container:
     name: kong-database
     image: postgres:9.4
     state: started
-    exposed_ports: 
+    exposed_ports:
       - 5432
     published_ports:
       - 5432:5432
     env:
        POSTGRES_USER: kong
        POSTGRES_DB: kong
+  tags:
+    - install
+    - run
 
-- name: check whether kong was migrated or not
-  command: echo "kong is not starting"
-  args:
-    warn: no
-  register: resultkongmigrated
-  changed_when: no
-  failed_when: no
+- name: Migrate database for kong service
+  docker_container:
+    name: migrate
+    image: kong:latest
+    state: started
+    links:
+      kong-database:kong-database
+    env:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: kong-database
+      KONG_CASSANDRA_CONTACT_POINTS: kong-database
+    command: kong migrations up
+  tags:
+    - migrate
+    - install
 
-- include_tasks: migrate_kong.yml
-  when: resultkongmigrated.rc === "kong is starting"
-  static: no
+- name: Remove migrate command
+  docker_container:
+    name: migrate
+    state: absent
+  tags:
+   - migrate
+   - install
 
 - name: Start Kong
   docker_container:
     name: kong
     image: kong
-    state: started
+    state: present
     links:
       - kong-database:kong-database
     env:
@@ -63,4 +95,6 @@
       - 8443:8443
       - 8001:8001
       - 8444:8444
-
+  tags:
+    - install
+    - run
