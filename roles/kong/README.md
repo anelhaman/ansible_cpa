@@ -11,7 +11,7 @@ cpu support sse4.2
 ```
 cat /proc/cpuinfo | grep sse4_2
 ```
-(https://medium.com/@nprch_12/docker-exited-132)[https://medium.com/@nprch_12/docker-exited-132-e38f9dd2cd0d]
+[Reference](https://medium.com/@nprch_12/docker-exited-132-e38f9dd2cd0d)
 
 Role Variables
 --------------
