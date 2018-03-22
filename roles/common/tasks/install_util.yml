@@ -16,3 +16,4 @@
    - openssh-server
    - htop
    - net-tools
+   - wget
