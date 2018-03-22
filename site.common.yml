@@ -1,0 +1,6 @@
+---
+- name: Install foundation 
+  hosts: all
+  user: root
+  roles:
+    - role: common
