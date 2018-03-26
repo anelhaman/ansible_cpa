@@ -38,21 +38,6 @@
   changed_when: no
   failed_when: no
 
-- include_tasks: install_docker.yml
-  when: resultdockerce.rc
-  static: no
-
-- include_tasks: install_docker_compose.yml
-  when: resultdockercompose.rc
-  static: no
-
-- include_tasks: install_zsh.yml
-  when: resultzsh.rc
-  static: no
-
-- include_tasks: install_zsh_autosuggest.yml
-  when: resultzshsuggest.rc
-  static: no
 
 - name: change the status of the docker daemon
   service:
@@ -66,3 +51,19 @@
     enabled: "{{docker_centos_enabled}}"
   when: docker_centos_enabled is not undefined
 
+- include_tasks: install_docker.yml
+  when: resultdockerce.rc
+  static: no
+
+
+- include_tasks: install_docker_compose.yml
+  when: resultdockercompose.rc
+  static: no
+
+- include_tasks: install_zsh.yml
+  when: resultzsh.rc
+  static: no
+
+- include_tasks: install_zsh_autosuggest.yml
+  when: resultzshsuggest.rc
+  static: no
