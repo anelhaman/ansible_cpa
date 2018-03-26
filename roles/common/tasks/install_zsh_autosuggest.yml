@@ -1,12 +1,22 @@
 ---
+- name: Clear all folder and file for pre-install
+  file:
+    state: absent
+    path: ~/.zsh/
+
 - name: Creates directory
   file: path=~/.zsh/zsh-autosuggestions/ state=directory
 
-- name: Install zsh autosuggestion
-  get_url:
-    url: https://github.com/zsh-users/zsh-autosuggestions
+#- name: Install zsh autosuggestion
+#  get_url:
+#    url: https://github.com/zsh-users/zsh-autosuggestions.git
+#    dest: ~/.zsh/zsh-autosuggestions/
+#    mode: 0755
+
+- git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
     dest: ~/.zsh/zsh-autosuggestions/
-    mode: 0755
+
 
 - name: copy zshrc conf
   template:
@@ -15,3 +25,20 @@
     owner: root
     group: root
     mode: 0644
+
+- name: Install Oh my Zsh
+  get_url:
+    url: https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+    dest: /home/install.sh
+    mode: 0600
+
+- name: Run Script
+  command: "sh /home/install.sh"
+
+- name: run zsh as default
+  command: chsh -s /bin/zsh
+
+- name: remove file install
+  file:
+    state: absent
+    path: /home/install.sh

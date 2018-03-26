@@ -4,21 +4,3 @@
     name: zsh 
     state: latest
 
-- name: Install Oh my Zsh
-  get_url: 
-    url: https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh 
-    dest: /home/install.sh
-    mode: 0600
-
-- name: Run Script
-  command: sh /home/install.sh
-
-- name: run zsh as default
-  command: chsh -s /bin/zsh
-
-- name: remove file install  
-  file:
-    state: absent
-    path: /home/install.sh 
-
-
