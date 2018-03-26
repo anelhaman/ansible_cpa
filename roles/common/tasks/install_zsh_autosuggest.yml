@@ -1,6 +1,17 @@
 ---
+- name: Creates directory
+  file: path=~/.zsh/zsh-autosuggestions/ state=directory
+
 - name: Install zsh autosuggestion
   get_url:
     url: https://github.com/zsh-users/zsh-autosuggestions
-    dest: ~/.zsh/zsh-autosuggestions
+    dest: ~/.zsh/zsh-autosuggestions/
     mode: 0755
+
+- name: copy zshrc conf
+  template:
+    src: zshrc.j2
+    dest: ~/.zshrc
+    owner: root
+    group: root
+    mode: 0644
