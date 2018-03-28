@@ -17,3 +17,6 @@
    - htop
    - net-tools
    - wget
+   - gcc 
+   - python-devel 
+   - python-pip

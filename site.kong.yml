@@ -1,6 +1,6 @@
 ---
 - name: Install Kong API Gateway
-  hosts: server0213
+  hosts: server02
   user: root
   roles:
     - role: kong

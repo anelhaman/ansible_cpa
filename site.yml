@@ -5,14 +5,8 @@
   roles:
     - role: common
   
-- name: Install Jenkins CI
-  hosts: ciserver
-  user: root
-  roles:
-    - role: jenkins
-
 - name: Install Kong API gateway
-  hosts: server0213
+  hosts: server0213 
   user: root
   roles:
     - role: kong 
